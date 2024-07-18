@@ -11,7 +11,5 @@ Route::post('/customer/login', [\App\Http\Controllers\AuthController::class, 'lo
 Auth::routes();
 
 Route::middleware('auth:web')->group(function (){
-    Route::get('/customer/menu', function (){
-        return view('customer.menu');
-    })->name('customer.menu');
+    Route::get('/customer/menu', [\App\Http\Controllers\CustomerController::class, 'menu'])->name('customer.menu');
 });
