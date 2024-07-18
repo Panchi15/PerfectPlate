@@ -38,6 +38,7 @@ body {
     display: flex;
     align-items: center;
     margin-right: 20px;
+    margin-top: 10px;
 }
 
 .filter-container label {
@@ -82,4 +83,36 @@ body {
 
 .menu-item.out-of-stock {
     color: gray;
+}
+.navi{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+.navi .search{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.search input[type=submit]{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+}
+.search input[type=submit]:hover{
+    background-color: tomato;
+    color: white;
+}
+.search input[type=text]{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
