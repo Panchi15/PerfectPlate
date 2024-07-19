@@ -10,7 +10,24 @@
 <div class="header-container">
     <h1>PerfectPlate</h1>
     <div class="cart-container">
-        <img src="{{asset('images/basket_icon.png')}}" alt="Cart" id="cart">
+        <div class="logout">
+            <a class="dropdown-item" href="#"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+
+        </div>
+        <div class="cart-icon">
+            <a href="{{route('customer.cart')}}">
+            <img src="{{asset('images/basket_icon.png')}}" alt="Cart" id="cart">
+            </a>
+        </div>
+        <div class="cart-count">
+            <p id="cart-count">{{$cartItemCount}}</p>
+        </div>
     </div>
 </div>
 <div class="nav">
@@ -22,8 +39,6 @@
     <!-- Food items will be dynamically populated here -->
     @yield('menu-content')
 </div>
-{{--
-<script src="{{asset('js/menu.js')}}"></script>
---}}
+
 </body>
 </html>

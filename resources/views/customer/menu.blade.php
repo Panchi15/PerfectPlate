@@ -32,11 +32,33 @@
             <h3>{{$item->itemName}}</h3>
             <p>Price: {{$item->price}}</p>
             <p>Dietary: {{$item->dietary}}</p>
-            {{--<form action="{{route('customer.menu.addToCart')}}" method="post">
+            @if($item->stock == 0)
+                <div class="out-of-stock">
+                <p>Out of stock</p>
+                </div>
+            @endif
+        </div>
+
+        <div class="menu-item-actions">
+            <form action="{{route('customer.cart.add')}}" method="post">
                 @csrf
-                <input type="hidden" name="item_id" value="{{$item->id}}">
-                <input type="submit" value="Add to Cart">
-            </form>--}}
+                <label for="customization">Customization</label>
+                <select id="customization" name="customization">
+                    <option value="None">None</option>
+                    <option value="Tomato">Tomato</option>
+                    <option value="Cheese">Cheese</option>
+                    <option value="Onion">Onion</option>
+                    <option value="Salad Leaves">Salad Leaves</option>
+                    <option value="Sauce">Sauce</option>
+                </select>
+                <input type="hidden" name="ItemID" value="{{$item->id}}">
+                <input type="number" name="Quantity" value="0" min="0" max="{{$item->stock}}">
+                @if($item->stock == 0)
+                    <input type="submit" value="Add to cart" disabled>
+                @else
+                    <input type="submit" value="Add to cart">
+                @endif
+            </form>
         </div>
     </div>
 

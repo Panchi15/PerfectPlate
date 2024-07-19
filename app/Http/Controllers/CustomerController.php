@@ -38,10 +38,4 @@ class CustomerController extends Controller
         return view('customer.menu', compact('items', 'search', 'filter'));
 
     }
-
-    public function filter(Request $request)
-    {
-
-        return view('customer.menu', ['items' => $items]);
-    }
 }
