@@ -37,7 +37,7 @@
         </div>
         <div class="cart-buttons">
             <a href="{{route('customer.menu')}}" class="button">Continue Shopping</a>
-           {{-- <a href="{{route('customer.checkout')}}" class="button">Checkout</a>--}}
+            <a href="{{route('customer.cart.checkout',['totel'=>$totel])}}" class="button">Checkout</a>
         </div>
     </div>
 

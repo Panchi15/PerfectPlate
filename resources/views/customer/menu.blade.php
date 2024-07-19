@@ -25,7 +25,11 @@
 
 @endsection
 @section('menu-content')
-
+            @if(session('order_success'))
+                <div class="alert alert-success">
+                    {{ session('order_success') }}
+                </div>
+            @endif
 @foreach($items as $item)
     <div class="menu-item">
         <div class="menu-item-details">

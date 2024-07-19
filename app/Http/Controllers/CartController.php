@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Item;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -94,5 +96,33 @@ class CartController extends Controller
         $cart->delete();
 
         return redirect()->route('customer.cart');
+    }
+
+    public function checkout(Request $request)
+    {
+
+        $userid = auth()->user()->id;
+        $carts = Cart::where('UserID', $userid)->get();
+        dd($carts);
+        $order = new Order();
+        $order->UserID = $userid;
+        $order->TotalPrice = $request->totel;
+        $order->save();
+
+        foreach ($carts as $cart) {
+            $orderitems = new OrderItem();
+            $orderitems->OrderID = $order->id;
+            $orderitems->ItemID = $cart->ItemID;
+            $orderitems->Quantity = $cart->Quantity;
+            $orderitems->Customization = $cart->customization;
+            $orderitems->Price = $cart->TotalPrice;
+            $orderitems->save();
+        }
+
+        Cart::where('UserID', $userid)->delete();
+
+        session()->flash('order_success', 'Your order has been placed successfully!');
+
+        return redirect()->route('customer.menu');
     }
 }
