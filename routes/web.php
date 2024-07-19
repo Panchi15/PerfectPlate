@@ -19,4 +19,5 @@ Route::middleware('auth:web')->group(function (){
     Route::get('/customer/menu/search', [\App\Http\Controllers\CustomerController::class, 'search'])->name('customer.menu.search');
     Route::post('/customer/cart/add', [\App\Http\Controllers\CartController::class, 'store'])->name('customer.cart.add');
     Route::get('/customer/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('customer.cart');
+    Route::delete('/customer/cart/{cart}/delete', [\App\Http\Controllers\CartController::class, 'destroy'])->name('customer.cart.delete');
 });

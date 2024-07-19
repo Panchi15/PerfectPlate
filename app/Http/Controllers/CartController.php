@@ -32,6 +32,12 @@ class CartController extends Controller
             'Quantity' => ['required'],
             'ItemID' => ['required'],
         ]);
+        if ($data['Quantity'] > Item::find($data['ItemID'])->stock) {
+            return redirect()->route('customer.menu');
+        }
+        if ($data['Quantity'] < 1) {
+            return redirect()->route('customer.menu');
+        }
 
         $unitPrice = Item::find($data['ItemID'])->price;
         $TotalPrice = $unitPrice * $data['Quantity'];
@@ -81,8 +87,12 @@ class CartController extends Controller
 
     public function destroy(Cart $cart)
     {
+        //add back to stock
+        $newstock = Item::find($cart->ItemID)->stock + $cart->Quantity;
+        Item::find($cart->ItemID)->update(['stock' => $newstock]);
+
         $cart->delete();
 
-        return response()->json();
+        return redirect()->route('customer.cart');
     }
 }

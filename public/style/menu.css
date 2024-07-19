@@ -181,13 +181,23 @@ body {
     padding: 10px;
     border-bottom: 1px solid #ddd;
 }
-.cart-item-details{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.cart-item tr td , .cart-item tr th{
+    padding: 10px;
+}
+.cart-item table{
+    text-align: left;
+    width: 100%;
 }
 .cart-total{
     text-align: right;
+    margin-right: 29%;
+}
+.cart-item button{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .menu-item-actions select{
     padding: 10px;

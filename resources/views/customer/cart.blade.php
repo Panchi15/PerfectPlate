@@ -3,27 +3,34 @@
     <div class="cart">
         <div class="cart-items">
             <div class="cart-item">
-                    <div class="cart-item-details">
-                        <div><p>Item Name</p></div>
-                        <div><p>Quantity</p></div>
-                        <div><p>Additional</p></div>
-                        <div><p>Unit Price</p></div>
-                        <div><p>Total Price</p></div>
-                    </div>
-            </div>
+                <table>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Quantity</th>
+                        <th>Additional</th>
+                        <th>Unit Price</th>
+                        <th>Total Price</th>
 
-            @foreach($carts as $cart)
-                @php($item = $items->find($cart->ItemID))
-                <div class="cart-item">
-                    <div class="cart-item-details">
-                        <div><p>{{$item->itemName}}</p></div>
-                        <div><p>{{$cart->Quantity}}</p></div>
-                        <div><p>{{$cart->customization}}</p></div>
-                        <div><p>${{$item->price}}</p></div>
-                        <div><p>${{$cart->TotalPrice}}</p></div>
-                    </div>
-                </div>
-            @endforeach
+                    </tr>
+                    @foreach($carts as $cart)
+                        @php($item = $items->find($cart->ItemID))
+                        <tr>
+                            <td>{{$item->itemName}}</td>
+                            <td>{{$cart->Quantity}}</td>
+                            <td>{{$cart->customization}}</td>
+                            <td>{{$item->price}}</td>
+                            <td>{{$cart->TotalPrice}}</td>
+                            <td>
+                                <form action="{{route('customer.cart.delete',['cart'=> $cart])}}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
         </div>
         <div class="cart-total">
             <p>Total: ${{$totel}}</p>
@@ -33,4 +40,5 @@
            {{-- <a href="{{route('customer.checkout')}}" class="button">Checkout</a>--}}
         </div>
     </div>
+
 @endsection
