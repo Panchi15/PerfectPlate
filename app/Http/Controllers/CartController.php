@@ -22,7 +22,7 @@ class CartController extends Controller
         }
         session()->put('total', $totel);
 
-        return view('customer.cart', compact('carts','items','totel'));
+        return view('customer.cart', compact('carts', 'items', 'totel'));
     }
 
     public function store(Request $request)
@@ -55,7 +55,6 @@ class CartController extends Controller
 
 
         return redirect()->route('customer.menu');
-
     }
 
     public function show(Cart $cart)
