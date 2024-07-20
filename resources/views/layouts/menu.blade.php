@@ -11,6 +11,14 @@
 <div class="header-container">
     <h1>PerfectPlate</h1>
     <div class="cart-container">
+        <div class="profile">
+            @if(isset($currentview) && $currentview == 'menu')
+                <a href="{{route('customer.profile')}}">Profile</a>
+            @elseif(isset($currentview) && $currentview == 'profile')
+                <a href="{{route('customer.menu')}}">Menu</a>
+            @endif
+
+        </div>
         <div class="logout">
             <a class="dropdown-item" href="#"
                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -35,7 +43,6 @@
     <!-- Navigation items will be dynamically populated here -->
     @yield('nav')
 </div>
-<div id="message" class="message-container"></div>
 <div class="menu-content">
     <!-- Food items will be dynamically populated here -->
     @yield('menu-content')

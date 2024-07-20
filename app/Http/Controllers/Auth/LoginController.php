@@ -31,6 +31,7 @@ class LoginController extends Controller
             'allergies' => $request->allergies,
             'role' => $request->role,
             'dob' => $request->dob,
+            'dietaryPreference' => $request->dietaryPreference,
         ]);
 
         return redirect()->route('welcome');
@@ -55,6 +56,7 @@ class LoginController extends Controller
     }
     public function logout()
     {
+
         Auth::logout();
         return redirect()->route('welcome');
     }

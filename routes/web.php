@@ -23,4 +23,8 @@ Route::middleware('auth:web')->group(function (){
     Route::get('/customer/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('customer.cart');
     Route::delete('/customer/cart/{cart}/delete', [\App\Http\Controllers\CartController::class, 'destroy'])->name('customer.cart.delete');
     Route::get('/customer/cart/checkout', [\App\Http\Controllers\CartController::class, 'checkout'])->name('customer.cart.checkout');
+    Route::get('/customer/profile', [\App\Http\Controllers\CustomerController::class, 'profile'])->name('customer.profile');
+    Route::get('/customer/profile/orders', [\App\Http\Controllers\CustomerController::class, 'orders'])->name('customer.profile.orders');
+    Route::put('/customer/profile/update', [\App\Http\Controllers\CustomerController::class, 'update'])->name('customer.profile.update');
+    Route::get('/customer/profile/{order}/items', [\App\Http\Controllers\CustomerController::class, 'orderitems'])->name('customer.profile.orderitems');
 });

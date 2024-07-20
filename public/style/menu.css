@@ -158,15 +158,15 @@ body {
     font-size: 14px;
     right: 10px;
 }
-.logout a{
+.logout a, .profile a{
     text-decoration: none;
     color: tomato;
     font-size: 16px;
 }
-.logout a:hover{
+.logout a:hover , .profile a:hover{
     text-decoration: underline;
 }
-.logout{
+.logout, .profile{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -259,5 +259,95 @@ footer a{
     font-weight: bold;
     text-decoration: none;
 
+}
+
+/* Profile Styling */
+
+.profile-navigation {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.profile-navigation a {
+    text-decoration: none;
+    color: tomato;
+    font-size: 16px;
+}
+
+.profile-navigation a:hover {
+    color: red;
+}
+
+.profile-info table{
+    text-align: left;
+}
+.profile-info td{
+    padding: 10px;
+}
+.profile-edit input[type=text], .profile-edit input[type=password], .profile-edit input[type=email], .profile-edit input[type=date], .profile-edit select{
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+.profile-edit button{
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.profile-edit button:hover{
+    background-color: tomato;
+    color: white;
+}
+
+/* Order Styling */
+
+.order-container{
+    padding: 20px;
+}
+.orderitem-details{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+/*view order button */
+.orderitem-details a{
+    text-decoration: none;
+    color: white;
+    background-color: tomato;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.order-details a:hover{
+    background-color: red;
+}
+
+/* order items styling */
+.orderitems-details{
+    border-bottom: #888888 1px solid;
+    margin: 10px;
+    padding: 10px;
+
+}
+.backtoorder a{
+    text-decoration: none;
+    color: white;
+    background-color: tomato;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 15px;
+}
+.backtoorder a:hover {
+    background-color: red;
 }
 
