@@ -103,7 +103,6 @@ class CartController extends Controller
 
         $userid = auth()->user()->id;
         $carts = Cart::where('UserID', $userid)->get();
-        dd($carts);
         $order = new Order();
         $order->UserID = $userid;
         $order->TotalPrice = $request->totel;
