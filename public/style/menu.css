@@ -223,3 +223,41 @@ body {
 .cart-buttons a:hover{
     background-color: red;
 }
+
+/*Footer Styling */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: tomato;
+    border-top: 1px solid #ddd;
+}
+footer h1{
+    font-size: 1.2em;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+footer p{
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+footer h2{
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+footer a{
+    background-color: #f0f0f0;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+

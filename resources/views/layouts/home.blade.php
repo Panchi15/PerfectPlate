@@ -29,13 +29,13 @@
                     <input type="text" id="email" name="email" required>
                     <div class="password-container">
                         <label for="password">Password</label>
-                        <a href="#" id="forgot-password">Forgot Password?</a>
+                        <a href="{{route('forgotpassword')}}" id="forgot-password">Forgot Password?</a>
                     </div>
                     <input type="password" id="password" name="password" required>
-                    {{--<div class="remember-me-container">
+                    <div class="remember-me-container">
                         <input type="checkbox" id="rememberMe" name="rememberMe">
                         <label for="rememberMe">Remember Me</label>
-                    </div>--}}
+                    </div>
                     <input type="submit" value="Log In">
                     <button type="button" class="sign-up-button" onclick="openSignUpForm()">Don't have an account?</button>
                 </form>
@@ -95,5 +95,25 @@
 
     <script src="{{asset('js/script.js')}}"></script>
     </body>
-
+    <footer>
+        <div class="loc">
+            <div class="f-name">
+                <h1>PerfectPlate</h1>
+            </div>
+            <div class="f-loc">
+                <h2>Location</h2>
+                <p>No.388, Union Place, Colombo 02</p>
+                <a href="https://maps.app.goo.gl/Wkjw3VHzJo87YRdu5" target="_blank">Location</a>
+            </div>
+        </div>
+        <div class="o_hours">
+            <h2>Opening Hours</h2>
+            <p>Monday - Friday</p>
+            <p>9.00AM - 5.00PM</p>
+            <p>Tel: 0112345678</p>
+        </div>
+        <div class="c-rights">
+            <p>© 2021 PerfectPlate. All Rights Reserved.</p>
+        </div>
+    </footer>
 </html>

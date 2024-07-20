@@ -11,6 +11,8 @@ Route::get('/login', function () {
     return view('welcome');
 });
 Route::post('/logout',[\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::get('/forgotpassword', [\App\Http\Controllers\Auth\LoginController::class, 'forgotpassword'])->name('forgotpassword');
+Route::put('/newpassword', [\App\Http\Controllers\Auth\LoginController::class, 'newpassword'])->name('newpassword');
 
 Auth::routes();
 

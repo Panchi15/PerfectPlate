@@ -38,12 +38,15 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $request->validate([
+         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
+        $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($request->only('email', 'password'))) {
+        $rememberMe = $request->rememberMe ? true : false;
+
+        if (Auth::attempt($credentials, $rememberMe)) {
 
             return redirect()->route('customer.menu');
         } else {
@@ -59,5 +62,24 @@ class LoginController extends Controller
     public function showLoginForm()
     {
         return view('welcome');
+    }
+
+    public function forgotpassword()
+    {
+        return view('forgot');
+    }
+    public function newpassword(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        $user = User::where('email', $request->email)->first();
+        $user->update([
+            'password' => bcrypt($request->password),
+        ]);
+
+        return redirect()->route('welcome');
     }
 }

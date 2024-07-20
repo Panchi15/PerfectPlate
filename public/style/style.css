@@ -173,3 +173,68 @@ body {
     display: block; /* Ensure all elements in the optionalFields section are displayed as block */
     margin-bottom: 10px;
 }
+.forgot form{
+    text-align: left;
+}
+.forgot form label{
+    margin-top: 10px;
+    font-weight: bold;
+}
+.forgot form input {
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    display: block; /* Ensure all input elements are displayed as block */
+}
+.forgot form button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: tomato;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+/*Footer Styling */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: tomato;
+    border-top: 1px solid #ddd;
+}
+footer h1{
+    font-size: 1.2em;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+footer p{
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+footer h2{
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+footer a{
+    background-color: #f0f0f0;
+    color: black;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+
+}
+
