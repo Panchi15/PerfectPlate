@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{{asset('style/style.css')}}">
     </head>
     <body>
+    <header>
         <div class="header-container">
             <h1>PerfectPlate</h1>
             <div class="button-container">
@@ -14,6 +15,8 @@
                 <button onclick="openSignUpForm()">Sign Up</button>
             </div>
         </div>
+    </header>
+
         <div class="content">
             @yield('content')
         </div>
