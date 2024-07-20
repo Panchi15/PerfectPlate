@@ -24,8 +24,14 @@ class ItemSeeder extends Seeder
                 'dietary' =>    'nonVegetarian',
                 'price' => 7.99,
                 'stock' => 20,
+            ],
+            [
+                'itemName' => 'Brownie',
+                'dietary' =>    'nonVegetarian',
+                'price' => 120.00,
+                'stock' => 30,
             ]
-            ];
+        ];
         foreach ($items as $item) {
             \App\Models\Item::create($item);
         }
