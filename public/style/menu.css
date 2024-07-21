@@ -351,3 +351,11 @@ footer a{
     background-color: red;
 }
 
+.empty-cart{
+    text-align: center;
+    font-size: 18px;
+    color: red;
+    padding: 20px;
+}
+
+

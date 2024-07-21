@@ -14,13 +14,14 @@ class LoginController extends Controller
     {
 
         $request->validate([
-            'fname' => 'required|string',
-            'lname' => 'required|string',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|string',
-            'allergies' => 'required|string',
-            'role' => 'required|string',
-            'dob' => 'required|date',
+            'fname' => 'required|string|max:255|regex:/^[a-zA-Z]+$/',
+            'lname' => 'required|string|max:255|regex:/^[a-zA-Z]+$/',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+            'allergies' => 'nullable|string|max:255',
+            'dietaryPreference' => 'nullable|string|in:vegetarian,nonVegetarian',
+            'role' => 'required|string|in:students,staff',
+            'dob' => 'nullable|date',
         ]);
 
         User::create([

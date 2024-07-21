@@ -28,13 +28,28 @@
                 <h2>Log In</h2>
                 <form action="{{route('customer.login')}}" method="POST">
                     @csrf
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <label for="email">Email</label>
                     <input type="text" id="email" name="email" required>
+                    @error('email')
+                    <div class="error">{{ $message }}</div>
+                    @enderror
                     <div class="password-container">
                         <label for="password">Password</label>
                         <a href="{{route('forgotpassword')}}" id="forgot-password">Forgot Password?</a>
                     </div>
                     <input type="password" id="password" name="password" required>
+                    @error('password')
+                    <div class="error">{{ $message }}</div>
+                    @enderror
                     <div class="remember-me-container">
                         <input type="checkbox" id="rememberMe" name="rememberMe">
                         <label for="rememberMe">Remember Me</label>
@@ -55,40 +70,77 @@
                 <form id="signUpForm" method="post" action="{{route('customer.signup')}}">
                     @csrf
 
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <label for="fname">First Name</label>
-                    <input type="text" id="firstName" name="fname" required>
+                    <input type="text" id="firstName" name="fname" value="{{ old('fname') }}" required>
+                    @error('fname')
+                    <div class="error">{{ $message }}</div>
+                    @enderror
 
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lastName" name="lname" required>
+                    <input type="text" id="lastName" name="lname" value="{{ old('lname') }}" required>
+                    @error('lname')
+                    <div class="error">{{ $message }}</div>
+                    @enderror
 
                     <label for="email">APIIT Email</label>
-                    <input type="email" id="apiitEmail" name="email" required>
+                    <input type="email" id="apiitEmail" name="email" value="{{ old('email') }}" required>
+                    @error('email')
+                    <div class="error">{{ $message }}</div>
+                    @enderror
 
                     <label for="password">Password</label>
                     <input type="password" id="newPassword" name="password" required>
+                    @error('password')
+                    <div class="error">{{ $message }}</div>
+                    @enderror
 
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                    <label for="password_confirmation">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="password_confirmation" required>
+                    @error('password_confirmation')
+                    <div class="error">{{ $message }}</div>
+                    @enderror
 
                     <!-- Optional Fields -->
                     <div id="optionalFields">
                         <label for="allergies">Allergies</label>
-                        <input type="text" id="allergies" name="allergies">
+                        <input type="text" id="allergies" name="allergies" value="{{ old('allergies') }}">
+                        @error('allergies')
+                        <div class="error">{{ $message }}</div>
+                        @enderror
 
                         <label for="dietaryPreference">Dietary Preference</label>
                         <select id="dietaryPreference" name="dietaryPreference">
-                            <option value="vegetarian">Vegetarian</option>
-                            <option value="nonVegetarian">Non-Vegetarian</option>
+                            <option value="vegetarian" {{ old('dietaryPreference') == 'vegetarian' ? 'selected' : '' }}>Vegetarian</option>
+                            <option value="nonVegetarian" {{ old('dietaryPreference') == 'nonVegetarian' ? 'selected' : '' }}>Non-Vegetarian</option>
                         </select>
+                        @error('dietaryPreference')
+                        <div class="error">{{ $message }}</div>
+                        @enderror
 
                         <label for="role">Role</label>
                         <select id="role" name="role">
-                            <option value="students">Student</option>
-                            <option value="staff">Staff</option>
+                            <option value="students" {{ old('role') == 'students' ? 'selected' : '' }}>Student</option>
+                            <option value="staff" {{ old('role') == 'staff' ? 'selected' : '' }}>Staff</option>
                         </select>
+                        @error('role')
+                        <div class="error">{{ $message }}</div>
+                        @enderror
 
                         <label for="dob">Date of Birth</label>
-                        <input type="date" id="dob" name="dob">
+                        <input type="date" id="dob" name="dob" value="{{ old('dob') }}">
+                        @error('dob')
+                        <div class="error">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <input type="submit" value="Sign Up">
