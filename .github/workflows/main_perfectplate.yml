@@ -63,4 +63,4 @@ jobs:
           app-name: 'PerfectPlate'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_ED959CBFE1C843599F0E64DD15D85500 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D6060D14A5DB46699515E165ED509E6A }}
