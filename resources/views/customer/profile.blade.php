@@ -56,10 +56,10 @@
                 <label for="lname">Last Name</label>
                 <input type="text" name="lname" id="lname" value="{{$user->lname}}">
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" value="{{$user->email}}">
-            </div>
+            </div> --}}
             <div class="form-group">
                 <label for="allergies">Allergies</label>
                 <input type="text" name="allergies" id="phone" value="{{$user->allergies}}">

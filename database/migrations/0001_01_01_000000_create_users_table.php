@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('allergies');
+            $table->string('allergies')->nullable();
             $table->string('dietaryPreference')->nullable();
             $table->string('role')->default('students');
             $table->date('dob')->nullable();

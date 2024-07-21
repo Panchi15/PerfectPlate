@@ -41,7 +41,6 @@ class CustomerController extends Controller
 
         // Return the view with the filtered items and search term
         return view('customer.menu', compact('items', 'search', 'filter'))->with('currentview', 'menu');
-
     }
 
     public function profile()
@@ -57,60 +56,54 @@ class CustomerController extends Controller
         $userid = auth()->user()->id;
         $orders = Order::where('userId', $userid)->orderBy('created_at', 'desc')->get();
 
-        return view('customer.orders',['orders'=> $orders] )->with('currentview', 'profile');
+        return view('customer.orders', ['orders' => $orders])->with('currentview', 'profile');
     }
 
     public function update(Request $request)
     {
-       $password = $request->password;
+        $password = $request->password;
 
-       if ($password == null){
-              $request->validate([
+        if ($password == null) {
+            $request->validate([
                 'fname' => 'required|string',
                 'lname' => 'required|string',
-                'email' => 'required|email',
                 'allergies' => 'required|string',
                 'dob' => 'required|date',
-              ]);
+            ]);
 
-              $user = User::find(auth()->user()->id);
-              $user->fname = $request->fname;
-              $user->lname = $request->lname;
-              $user->email = $request->email;
-              $user->allergies = $request->allergies;
-              $user->dob = $request->dob;
-              $user->role = $request->role;
-              $user->dietaryPreference = $request->dietaryPreference;
-              $user->save();
+            $user = User::find(auth()->user()->id);
+            $user->fname = $request->fname;
+            $user->lname = $request->lname;
+            $user->allergies = $request->allergies;
+            $user->dob = $request->dob;
+            $user->role = $request->role;
+            $user->dietaryPreference = $request->dietaryPreference;
+            $user->save();
 
-           return redirect()->route('customer.profile', ['user' => $user])->with('currentview', 'profile');
-         } else {
-              $request->validate([
+            return redirect()->route('customer.profile', ['user' => $user])->with('currentview', 'profile');
+        } else {
+            $request->validate([
                 'fname' => 'required|string',
                 'lname' => 'required|string',
-                'email' => 'required|email',
                 'allergies' => 'required|string',
                 'dob' => 'required|date',
                 'password' => 'required|string',
-              ]);
+            ]);
 
-              $user = User::find(auth()->user()->id);
-              $user->fname = $request->fname;
-              $user->lname = $request->lname;
-              $user->email = $request->email;
-              $user->allergies = $request->allergies;
-              $user->dob = $request->dob;
-              $user->password = bcrypt($request->password);
-              $user->role = $request->role;
-              $user->dietaryPreference = $request->dietaryPreference;
-              $user->save();
+            $user = User::find(auth()->user()->id);
+            $user->fname = $request->fname;
+            $user->lname = $request->lname;
+            $user->allergies = $request->allergies;
+            $user->dob = $request->dob;
+            $user->password = bcrypt($request->password);
+            $user->role = $request->role;
+            $user->dietaryPreference = $request->dietaryPreference;
+            $user->save();
 
-              //logout
-                Auth::logout();
-                return redirect()->route('welcome');
-       }
-
-
+            //logout
+            Auth::logout();
+            return redirect()->route('welcome');
+        }
     }
 
     public function orderitems(Order $order)

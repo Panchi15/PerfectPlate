@@ -24,10 +24,17 @@ class LoginController extends Controller
             'dob' => 'nullable|date',
         ]);
 
+        // Convert email to lowercase
+        $email = strtolower($request->email);
+
+        // Capitalize the first letter of fname and lname, and make the rest lowercase
+        $fname = ucfirst(strtolower($request->fname));
+        $lname = ucfirst(strtolower($request->lname));
+
         User::create([
-            'fname' => $request->fname,
-            'lname' => $request->lname,
-            'email' => $request->email,
+            'fname' => $fname,
+            'lname' => $lname,
+            'email' => $email,
             'password' => bcrypt($request->password),
             'allergies' => $request->allergies,
             'role' => $request->role,
@@ -40,7 +47,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
@@ -52,7 +59,7 @@ class LoginController extends Controller
 
             return redirect()->route('customer.menu');
         } else {
-            return redirect()->back();
+            return redirect()->back()->withErrors(['invalid' => 'Invalid credentials']);
         }
     }
     public function logout()
